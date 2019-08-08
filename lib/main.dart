@@ -4,27 +4,35 @@ import './widgets/grid_product.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Shopping',
-      theme: ThemeData.dark().copyWith(
-          primaryColor: Colors.orange,
-          accentColor: Colors.amber,
-          buttonColor: Colors.grey,
-          textTheme: TextTheme(
-            title: TextStyle(
-              fontFamily: 'Montserrat',
-              color: Colors.black,
-              fontStyle: FontStyle.normal,
-              fontWeight: FontWeight.bold,
-              fontSize: 22,
-            ),
-          )),
-      home: MyHomePage(),
-    );
+        debugShowCheckedModeBanner: false,
+        title: 'Cinema',
+        theme: ThemeData.dark().copyWith(
+            primaryColor: Colors.orange,
+            accentColor: Colors.amber,
+            buttonColor: Colors.grey,
+            textTheme: TextTheme(
+              title: TextStyle(
+                fontFamily: 'Montserrat',
+                color: Colors.black,
+                fontStyle: FontStyle.normal,
+                fontWeight: FontWeight.bold,
+                fontSize: 22,
+              ),
+            )),
+        initialRoute: '/',
+        routes: {
+          '/': (ctx) => MyHomePage(),
+          ProductScreen.page: (ctx) => ProductScreen(),
+        });
   }
 }
 
@@ -38,11 +46,19 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Theme.of(context).accentColor,
-        onPressed: null,
+        child: Icon(
+          Icons.more_horiz,
+          size: 30,
+        ),
+        backgroundColor: Theme.of(context).primaryColor,
+        onPressed: () {
+          setState(() {
+            Navigator.pushNamed(context, ProductScreen.page);
+          });
+        },
       ),
       appBar: AppBar(
-        title: Text('Shopping'),
+        title: Text('Cinema Home'),
       ),
       body: Center(
         child: Text('SHOP'),
