@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cinema/widgets/grid_product.dart';
+import 'package:movies/widgets/grid_product.dart';
 import '../classes/product.dart';
 
 class ProductScreen extends StatelessWidget {

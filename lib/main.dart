@@ -61,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text('Cinema Home'),
       ),
       body: Center(
-        child: Text('SHOP'),
+        child: Text('BUY'),
       ),
     );
   }

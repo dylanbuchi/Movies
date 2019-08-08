@@ -1,4 +1,4 @@
-# shopping
+# movies
 
 A new Flutter project.
 

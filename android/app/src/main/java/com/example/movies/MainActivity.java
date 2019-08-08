@@ -1,4 +1,4 @@
-package com.example.shopping;
+package com.example.movies;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
