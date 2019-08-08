@@ -41,7 +41,10 @@ class ProductScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('My Little Shop'),
+        title: Text(
+          'My Little Shop',
+          style: Theme.of(context).textTheme.title,
+        ),
       ),
       body: GridView.builder(
         padding: const EdgeInsets.all(10.0),
@@ -54,10 +57,10 @@ class ProductScreen extends StatelessWidget {
         ),
         itemCount: products.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 3 / 2,
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
+          crossAxisCount: 1,
+          childAspectRatio: 1 / 1,
+          crossAxisSpacing: 20,
+          mainAxisSpacing: 50,
         ),
       ),
     );

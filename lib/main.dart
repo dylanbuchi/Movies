@@ -11,11 +11,19 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Shopping',
       theme: ThemeData.dark().copyWith(
-        primaryColor: Colors.orange,
-        accentColor: Colors.amber,
-        buttonColor: Colors.grey,
-      ),
-      home: ProductScreen(),
+          primaryColor: Colors.orange,
+          accentColor: Colors.amber,
+          buttonColor: Colors.grey,
+          textTheme: TextTheme(
+            title: TextStyle(
+              fontFamily: 'Montserrat',
+              color: Colors.black,
+              fontStyle: FontStyle.normal,
+              fontWeight: FontWeight.bold,
+              fontSize: 22,
+            ),
+          )),
+      home: MyHomePage(),
     );
   }
 }
