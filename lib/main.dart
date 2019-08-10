@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import './screens/products_screen.dart';
 import './widgets/grid_product.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(MyApp());
+}
 
 class MyApp extends StatefulWidget {
   @override
@@ -16,18 +18,19 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         title: 'Cinema',
         theme: ThemeData.dark().copyWith(
-            primaryColor: Colors.orange,
-            accentColor: Colors.amber,
-            buttonColor: Colors.grey,
-            textTheme: TextTheme(
-              title: TextStyle(
-                fontFamily: 'Montserrat',
-                color: Colors.black,
-                fontStyle: FontStyle.normal,
-                fontWeight: FontWeight.bold,
-                fontSize: 22,
-              ),
-            )),
+          primaryColor: Colors.orange,
+          accentColor: Colors.grey,
+          buttonColor: Colors.grey,
+          textTheme: TextTheme(
+            title: TextStyle(
+              fontFamily: 'Montserrat',
+              color: Colors.black,
+              fontStyle: FontStyle.normal,
+              fontWeight: FontWeight.bold,
+              fontSize: 22,
+            ),
+          ),
+        ),
         initialRoute: '/',
         routes: {
           '/': (ctx) => MyHomePage(),
@@ -59,9 +62,6 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       appBar: AppBar(
         title: Text('Cinema Home'),
-      ),
-      body: Center(
-        child: Text('BUY'),
       ),
     );
   }

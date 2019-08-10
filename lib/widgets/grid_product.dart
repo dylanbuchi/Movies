@@ -23,40 +23,43 @@ class _GridProductState extends State<GridProduct> {
         widget.imageUrl,
         fit: BoxFit.fill,
       ),
-      footer: GridTileBar(
-        leading: IconButton(
-          icon: Icon(
-            Icons.favorite,
-            size: 30,
-            color: pressedIconLove ? Colors.red : Colors.white,
+      footer: Padding(
+        padding: const EdgeInsets.all(0),
+        child: GridTileBar(
+          leading: IconButton(
+            icon: Icon(
+              Icons.favorite,
+              size: 30,
+              color: pressedIconLove ? Colors.redAccent : Colors.grey[800],
+            ),
+            onPressed: () {
+              setState(() {
+                pressedIconLove = !pressedIconLove;
+              });
+            },
           ),
-          onPressed: () {
-            setState(() {
-              pressedIconLove = !pressedIconLove;
-            });
-          },
-        ),
-        trailing: IconButton(
-          icon: Icon(
-            Icons.shopping_cart,
-            size: 30,
-            color: pressedIconShoppingCart ? Colors.white : Colors.greenAccent,
+          trailing: IconButton(
+            icon: Icon(
+              Icons.shopping_cart,
+              size: 30,
+              color: pressedIconShoppingCart ? Colors.yellow : Colors.grey[800],
+            ),
+            onPressed: () {
+              setState(() {
+                pressedIconShoppingCart = !pressedIconShoppingCart;
+              });
+            },
           ),
-          onPressed: () {
-            setState(() {
-              pressedIconShoppingCart = !pressedIconShoppingCart;
-            });
-          },
-        ),
-        backgroundColor: Colors.black38,
-        title: Text(
-          widget.title,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Colors.white,
-            fontFamily: 'Nunito',
-            fontWeight: FontWeight.w700,
-            fontSize: 18,
+          backgroundColor: Theme.of(context).accentColor,
+          title: Text(
+            widget.title,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.black,
+              fontFamily: 'Nunito',
+              fontWeight: FontWeight.w700,
+              fontSize: 18,
+            ),
           ),
         ),
       ),

@@ -48,7 +48,6 @@ class ProductScreen extends StatelessWidget {
         ),
       ),
       body: GridView.builder(
-        padding: const EdgeInsets.all(10.0),
         itemBuilder: (context, item) => GridProduct(
           //builds the item id, title and image into the GridView
           products[item].id,
@@ -61,7 +60,7 @@ class ProductScreen extends StatelessWidget {
           crossAxisCount: 1,
           childAspectRatio: 0.7,
           crossAxisSpacing: 0,
-          mainAxisSpacing: 70,
+          mainAxisSpacing: 0,
         ),
       ),
     );
