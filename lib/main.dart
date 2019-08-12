@@ -16,8 +16,8 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      builder: (ctx) => ProductProvider(),
+    return ChangeNotifierProvider.value(
+      value: Products(),
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Cinema',
