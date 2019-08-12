@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:movies/classes/product.dart';
+import 'package:movies/widgets/product_items.dart';
 import 'package:provider/provider.dart';
-
-import 'grid_product.dart';
+import 'package:movies/providers/products_providers.dart';
 
 class ProductGrid extends StatelessWidget {
-  const ProductGrid({
+/*   const ProductGrid({
     Key key,
     @required this.products,
   }) : super(key: key);
 
-  final List<Product> products;
+  final List<ProductProvider> products; */
 
   @override
   Widget build(BuildContext context) {
-    Provider.of(context)
+    final productData = Provider.of<ProductProvider>(context);
+    final products = productData.items;
     return GridView.builder(
-      itemBuilder: (context, item) => GridProduct(
+      itemBuilder: (context, item) => ProductItems(
         //builds the item id, title and image into the GridView
         products[item].id,
         products[item].title,

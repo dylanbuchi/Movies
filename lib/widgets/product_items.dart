@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:movies/screens/product_detail_screen.dart';
 
-class GridProduct extends StatefulWidget {
+class ProductItems extends StatefulWidget {
   final String id;
   final String title;
   final String imageUrl;
 
-  GridProduct(
+  ProductItems(
     this.id,
     this.title,
     this.imageUrl,
   );
 
   @override
-  _GridProductState createState() => _GridProductState();
+  _ProductItemsState createState() => _ProductItemsState();
 }
 
-class _GridProductState extends State<GridProduct> {
+class _ProductItemsState extends State<ProductItems> {
   var pressedIconLove = true;
   var pressedIconShoppingCart = true;
 
