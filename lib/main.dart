@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import './screens/products_screen.dart';
 import './widgets/grid_product.dart';
+import 'screens/product_detail_screen.dart';
+import 'providers/products_providers.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,28 +17,32 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Cinema',
-        theme: ThemeData.dark().copyWith(
-          primaryColor: Colors.orange,
-          accentColor: Colors.grey,
-          buttonColor: Colors.grey,
-          textTheme: TextTheme(
-            title: TextStyle(
-              fontFamily: 'Montserrat',
-              color: Colors.black,
-              fontStyle: FontStyle.normal,
-              fontWeight: FontWeight.bold,
-              fontSize: 22,
+    return ChangeNotifierProvider(
+      builder: (ctx) => ProductProvider(),
+      child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Cinema',
+          theme: ThemeData.dark().copyWith(
+            primaryColor: Colors.orange,
+            accentColor: Colors.grey,
+            buttonColor: Colors.grey,
+            textTheme: TextTheme(
+              title: TextStyle(
+                fontFamily: 'Montserrat',
+                color: Colors.black,
+                fontStyle: FontStyle.normal,
+                fontWeight: FontWeight.bold,
+                fontSize: 22,
+              ),
             ),
           ),
-        ),
-        initialRoute: '/',
-        routes: {
-          '/': (ctx) => MyHomePage(),
-          ProductScreen.page: (ctx) => ProductScreen(),
-        });
+          initialRoute: '/',
+          routes: {
+            '/': (ctx) => MyHomePage(),
+            ProductScreen.page: (ctx) => ProductScreen(),
+            ProductDetailScreen.page: (ctx) => ProductDetailScreen(),
+          }),
+    );
   }
 }
 
