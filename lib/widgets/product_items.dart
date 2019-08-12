@@ -19,13 +19,12 @@ class ProductItem extends StatefulWidget {
   _ProductItemState createState() => _ProductItemState();
 }
 
-/* class _ProductItemState extends State<ProductItem> {
+class _ProductItemState extends State<ProductItem> {
   var pressedIconLove = true;
   var pressedIconShoppingCart = true;
-
   @override
   Widget build(BuildContext context) {
-    final product = Provider.of<Products>(context, listen: false);
+    final product = Provider.of<Product>(context, listen: false);
     return GridTile(
       child: GestureDetector(
         onTap: () {
@@ -36,7 +35,7 @@ class ProductItem extends StatefulWidget {
         },
         child: Image.network(
           product.imageUrl,
-          fit: BoxFit.fill,
+          fit: BoxFit.cover,
         ),
       ),
       footer: Padding(
@@ -68,7 +67,7 @@ class ProductItem extends StatefulWidget {
           ),
           backgroundColor: Theme.of(context).accentColor,
           title: Text(
-            product.title
+            product.title,
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.black,
@@ -76,54 +75,6 @@ class ProductItem extends StatefulWidget {
               fontWeight: FontWeight.w700,
               fontSize: 18,
             ),
-          ),
-        ),
-      ),
-    );
-  }
-} */
-class _ProductItemState extends State<ProductItem> {
-  @override
-  Widget build(BuildContext context) {
-    final product = Provider.of<Product>(context, listen: false);
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(10),
-      child: GridTile(
-        child: GestureDetector(
-          onTap: () {
-            Navigator.of(context).pushNamed(
-              ProductDetailScreen.page,
-              arguments: product.id,
-            );
-          },
-          child: Image.network(
-            product.imageUrl,
-            fit: BoxFit.cover,
-          ),
-        ),
-        footer: GridTileBar(
-          backgroundColor: Colors.black87,
-          leading: Consumer<Product>(
-            builder: (ctx, product, child) => IconButton(
-              icon: Icon(
-                product.isFavorite ? Icons.favorite : Icons.favorite_border,
-              ),
-              color: Theme.of(context).accentColor,
-              onPressed: () {
-                //product.toggleFavoriteStatus();
-              },
-            ),
-          ),
-          title: Text(
-            product.title,
-            textAlign: TextAlign.center,
-          ),
-          trailing: IconButton(
-            icon: Icon(
-              Icons.shopping_cart,
-            ),
-            onPressed: () {},
-            color: Theme.of(context).accentColor,
           ),
         ),
       ),
