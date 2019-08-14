@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:movies/providers/cart.dart';
+import 'package:movies/screens/cart_screen.dart';
 import './screens/products_screen.dart';
 import 'screens/product_detail_screen.dart';
-import 'providers/products_providers.dart';
+import 'providers/products.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -16,8 +18,15 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider.value(
-      value: Products(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider.value(
+          value: Products(),
+        ),
+        ChangeNotifierProvider.value(
+          value: Cart(),
+        ),
+      ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Cinema',
@@ -40,6 +49,7 @@ class _MyAppState extends State<MyApp> {
             '/': (ctx) => MyHomePage(),
             ProductScreen.page: (ctx) => ProductScreen(),
             ProductDetailScreen.page: (ctx) => ProductDetailScreen(),
+            CartScreen.page: (ctx) => CartScreen(),
           }),
     );
   }
@@ -54,6 +64,11 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: Container(
+        child: Image.asset(
+          'assets/images/movies.JPG',
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         child: Icon(
           Icons.more_horiz,

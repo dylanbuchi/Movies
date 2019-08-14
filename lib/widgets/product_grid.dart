@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:movies/widgets/product_items.dart';
 import 'package:provider/provider.dart';
-import 'package:movies/providers/products_providers.dart';
+import 'package:movies/providers/products.dart';
 
 class ProductGrid extends StatelessWidget {
+  final bool showFavorites;
+
+  ProductGrid(this.showFavorites);
+
   @override
   Widget build(BuildContext context) {
     final productData = Provider.of<Products>(context);
-    final products = productData.items;
+    final products =
+        showFavorites ? productData.favoriteItems : productData.items;
     return GridView.builder(
       itemBuilder: (context, item) => ChangeNotifierProvider.value(
         //builder: (ctx) => products[item],

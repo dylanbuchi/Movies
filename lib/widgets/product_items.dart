@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies/providers/cart.dart';
 
 import 'package:movies/screens/product_detail_screen.dart';
 import 'package:provider/provider.dart';
@@ -20,11 +21,12 @@ class ProductItem extends StatefulWidget {
 }
 
 class _ProductItemState extends State<ProductItem> {
-  var pressedIconLove = true;
-  var pressedIconShoppingCart = true;
+  var _pressedIconLove = false;
+  var _pressedIconShoppingCart = false;
   @override
   Widget build(BuildContext context) {
     final product = Provider.of<Product>(context, listen: false);
+    final cart = Provider.of<Cart>(context, listen: false);
     return GridTile(
       child: GestureDetector(
         onTap: () {
@@ -45,11 +47,11 @@ class _ProductItemState extends State<ProductItem> {
             icon: Icon(
               Icons.favorite,
               size: 30,
-              color: pressedIconLove ? Colors.redAccent : Colors.grey[800],
+              color: _pressedIconLove ? Colors.redAccent : Colors.grey[800],
             ),
             onPressed: () {
               setState(() {
-                pressedIconLove = !pressedIconLove;
+                _pressedIconLove = !_pressedIconLove;
               });
             },
           ),
@@ -57,11 +59,13 @@ class _ProductItemState extends State<ProductItem> {
             icon: Icon(
               Icons.shopping_cart,
               size: 30,
-              color: pressedIconShoppingCart ? Colors.yellow : Colors.grey[800],
+              color:
+                  _pressedIconShoppingCart ? Colors.yellow : Colors.grey[800],
             ),
             onPressed: () {
               setState(() {
-                pressedIconShoppingCart = !pressedIconShoppingCart;
+                _pressedIconShoppingCart = !_pressedIconShoppingCart;
+                cart.addItem(product.id, product.price, product.title);
               });
             },
           ),
