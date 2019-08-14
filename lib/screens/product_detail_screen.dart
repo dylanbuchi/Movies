@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movies/providers/products.dart';
 import 'package:provider/provider.dart';
@@ -16,6 +17,46 @@ class ProductDetailScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(loadedProduct.title),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Container(
+              height: 500,
+              width: double.infinity,
+              child: CachedNetworkImage(
+                imageUrl: loadedProduct.imageUrl,
+                placeholder: (context, url) => CircularProgressIndicator(),
+                errorWidget: (context, url, error) => Icon(Icons.error),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SizedBox(
+                child: Text(
+                  loadedProduct.synopsis,
+                  style: TextStyle(fontSize: 24),
+                ),
+                height: 30,
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.all(20),
+              width: 500,
+              child: Text(
+                loadedProduct.description,
+                textAlign: TextAlign.justify,
+                style: TextStyle(
+                  fontSize: 18,
+                  height: 1.5,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

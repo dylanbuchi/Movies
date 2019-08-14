@@ -6,9 +6,7 @@ import 'screens/product_detail_screen.dart';
 import 'providers/products.dart';
 import 'package:provider/provider.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
   @override
@@ -17,17 +15,16 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   @override
-  Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider.value(
-          value: Products(),
-        ),
-        ChangeNotifierProvider.value(
-          value: Cart(),
-        ),
-      ],
-      child: MaterialApp(
+  Widget build(BuildContext context) => MultiProvider(
+        providers: [
+          ChangeNotifierProvider.value(
+            value: Products(),
+          ),
+          ChangeNotifierProvider.value(
+            value: Cart(),
+          ),
+        ],
+        child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Cinema',
           theme: ThemeData.dark().copyWith(
@@ -50,9 +47,9 @@ class _MyAppState extends State<MyApp> {
             ProductScreen.page: (ctx) => ProductScreen(),
             ProductDetailScreen.page: (ctx) => ProductDetailScreen(),
             CartScreen.page: (ctx) => CartScreen(),
-          }),
-    );
-  }
+          },
+        ),
+      );
 }
 
 class MyHomePage extends StatefulWidget {
@@ -62,28 +59,27 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        child: Image.asset(
+  Widget build(BuildContext context) => Scaffold(
+        body: Image.asset(
           'assets/images/movies.JPG',
+          height: double.infinity,
+          width: double.infinity,
+          fit: BoxFit.cover,
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(
-          Icons.more_horiz,
-          size: 30,
+        floatingActionButton: FloatingActionButton(
+          child: Icon(
+            Icons.more_horiz,
+            size: 30,
+          ),
+          backgroundColor: Theme.of(context).primaryColor,
+          onPressed: () => setState(
+            () => Navigator.pushNamed(context, ProductScreen.page),
+          ),
         ),
-        backgroundColor: Theme.of(context).primaryColor,
-        onPressed: () {
-          setState(() {
-            Navigator.pushNamed(context, ProductScreen.page);
-          });
-        },
-      ),
-      appBar: AppBar(
-        title: Text('Cinema Home'),
-      ),
-    );
-  }
+        appBar: AppBar(
+          title: Text(
+            'Cinema Home',
+          ),
+        ),
+      );
 }

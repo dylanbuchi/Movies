@@ -26,9 +26,11 @@ class Cart with ChangeNotifier {
 
   double get totalAmount {
     var total = 0.0;
-    _items.forEach((key, cardItem) {
-      total += cardItem.price + cardItem.quantity;
-    });
+    _items.forEach(
+      (key, cardItem) {
+        total += cardItem.price + cardItem.quantity;
+      },
+    );
     return total;
   }
 
@@ -50,15 +52,21 @@ class Cart with ChangeNotifier {
       );
     } else {
       _items.putIfAbsent(
-          productId,
-          () => CartItem(
-                id: DateTime.now().toString(),
-                title: title,
-                price: price,
-                quantity: 1,
-              ));
+        productId,
+        () => CartItem(
+          id: DateTime.now().toString(),
+          title: title,
+          price: price,
+          quantity: 1,
+        ),
+      );
     }
+
+    notifyListeners();
   }
 
-  notifyListeners();
+  void removeItem(String productId) {
+    _items.remove(productId);
+    notifyListeners();
+  }
 }

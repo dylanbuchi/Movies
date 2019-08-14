@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies/providers/cart.dart';
-
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:movies/screens/product_detail_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:movies/providers/product.dart';
@@ -35,10 +35,12 @@ class _ProductItemState extends State<ProductItem> {
             arguments: product.id,
           );
         },
-        child: Image.network(
-          product.imageUrl,
-          fit: BoxFit.cover,
-        ),
+        child: CachedNetworkImage(
+          imageUrl: product.imageUrl,
+          placeholder: (context, url) => CircularProgressIndicator(),
+          errorWidget: (context, url, error) => Icon(Icons.error),
+        ), //Image.network(
+        //product.imageUrl,
       ),
       footer: Padding(
         padding: const EdgeInsets.all(0),
@@ -71,7 +73,7 @@ class _ProductItemState extends State<ProductItem> {
           ),
           backgroundColor: Theme.of(context).accentColor,
           title: Text(
-            product.title,
+            '${product.title}   \$${product.price}',
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.black,
