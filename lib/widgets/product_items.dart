@@ -36,6 +36,7 @@ class _ProductItemState extends State<ProductItem> {
           );
         },
         child: CachedNetworkImage(
+          fit: BoxFit.fill,
           imageUrl: product.imageUrl,
           placeholder: (context, url) => CircularProgressIndicator(),
           errorWidget: (context, url, error) => Icon(Icons.error),
@@ -61,8 +62,9 @@ class _ProductItemState extends State<ProductItem> {
             icon: Icon(
               Icons.shopping_cart,
               size: 30,
-              color:
-                  _pressedIconShoppingCart ? Colors.yellow : Colors.grey[800],
+              color: _pressedIconShoppingCart
+                  ? Colors.green[900]
+                  : Colors.grey[800],
             ),
             onPressed: () {
               setState(() {
@@ -75,7 +77,7 @@ class _ProductItemState extends State<ProductItem> {
           title: Text(
             '${product.title}   \$${product.price}',
             textAlign: TextAlign.center,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.black,
               fontFamily: 'Nunito',
               fontWeight: FontWeight.w700,

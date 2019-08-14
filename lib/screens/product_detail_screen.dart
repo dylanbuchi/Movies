@@ -25,6 +25,7 @@ class ProductDetailScreen extends StatelessWidget {
               height: 500,
               width: double.infinity,
               child: CachedNetworkImage(
+                fit: BoxFit.fill,
                 imageUrl: loadedProduct.imageUrl,
                 placeholder: (context, url) => CircularProgressIndicator(),
                 errorWidget: (context, url, error) => Icon(Icons.error),
@@ -38,18 +39,18 @@ class ProductDetailScreen extends StatelessWidget {
               child: SizedBox(
                 child: Text(
                   loadedProduct.synopsis,
-                  style: TextStyle(fontSize: 24),
+                  style: const TextStyle(fontSize: 24),
                 ),
                 height: 30,
               ),
             ),
             Container(
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               width: 500,
               child: Text(
                 loadedProduct.description,
                 textAlign: TextAlign.justify,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 18,
                   height: 1.5,
                 ),

@@ -28,13 +28,13 @@ class _MyAppState extends State<MyApp> {
           debugShowCheckedModeBanner: false,
           title: 'Cinema',
           theme: ThemeData.dark().copyWith(
-            primaryColor: Colors.orange,
-            accentColor: Colors.grey,
+            primaryColor: Colors.purple[800],
+            accentColor: Colors.amber,
             buttonColor: Colors.grey,
             textTheme: TextTheme(
               title: TextStyle(
                 fontFamily: 'Montserrat',
-                color: Colors.black,
+                color: Colors.white,
                 fontStyle: FontStyle.normal,
                 fontWeight: FontWeight.bold,
                 fontSize: 22,
@@ -61,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) => Scaffold(
         body: Image.asset(
-          'assets/images/movies.JPG',
+          'assets/images/movies.png',
           height: double.infinity,
           width: double.infinity,
           fit: BoxFit.cover,
@@ -70,6 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Icon(
             Icons.more_horiz,
             size: 30,
+            color: Colors.white,
           ),
           backgroundColor: Theme.of(context).primaryColor,
           onPressed: () => setState(
@@ -78,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         appBar: AppBar(
           title: Text(
-            'Cinema Home',
+            'Home',
           ),
         ),
       );

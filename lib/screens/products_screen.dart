@@ -33,7 +33,7 @@ class _ProductScreenState extends State<ProductScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Cinema Zleep',
+          'Infinite Cinema',
           style: Theme.of(context).textTheme.title,
         ),
         actions: <Widget>[
