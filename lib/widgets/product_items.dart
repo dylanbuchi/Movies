@@ -25,7 +25,7 @@ class _ProductItemState extends State<ProductItem> {
   var _pressedIconShoppingCart = false;
   @override
   Widget build(BuildContext context) {
-    final product = Provider.of<Product>(context, listen: false);
+    final product = Provider.of<Movie>(context, listen: false);
     final cart = Provider.of<Cart>(context, listen: false);
     return GridTile(
       child: GestureDetector(
@@ -63,7 +63,7 @@ class _ProductItemState extends State<ProductItem> {
               Icons.shopping_cart,
               size: 30,
               color: _pressedIconShoppingCart
-                  ? Colors.green[900]
+                  ? Colors.blue[100]
                   : Colors.grey[800],
             ),
             onPressed: () {

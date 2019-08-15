@@ -6,9 +6,8 @@ class Products with ChangeNotifier {
   static const String plot = "Resume:";
   static const double price = 9.99;
 
-  List<Product> _items = [
-    Product(
-      synopsis: plot,
+  List<Movie> _items = [
+    Movie(
       id: 'p1',
       title: 'Batman Begins',
       description:
@@ -16,9 +15,10 @@ class Products with ChangeNotifier {
       price: price,
       imageUrl:
           'https://m.media-amazon.com/images/M/MV5BZmUwNGU2ZmItMmRiNC00MjhlLTg5YWUtODMyNzkxODYzMmZlXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_SY1000_SX750_AL_.jpg',
-    ),
-    Product(
       synopsis: plot,
+      trailer: "https://www.youtube.com/watch?v=neY2xVmOfUM",
+    ),
+    Movie(
       id: 'p2',
       title: 'Avatar',
       description:
@@ -26,9 +26,10 @@ class Products with ChangeNotifier {
       price: price,
       imageUrl:
           'https://i.pinimg.com/564x/1d/42/8f/1d428fc1bb6d2c3528c02753d6b3559e.jpg',
-    ),
-    Product(
       synopsis: plot,
+      trailer: "https://www.youtube.com/watch?v=6ziBFh3V1aM",
+    ),
+    Movie(
       id: 'p3',
       title: 'Avengers',
       description:
@@ -36,9 +37,10 @@ class Products with ChangeNotifier {
       price: price,
       imageUrl:
           'https://i.pinimg.com/564x/d6/a6/08/d6a608d0db69ed5b40b7dae2aa3a34bc.jpg',
-    ),
-    Product(
       synopsis: plot,
+      trailer: "https://www.youtube.com/watch?v=eOrNdBpGMv8",
+    ),
+    Movie(
       id: 'p4',
       title: 'Interstellar',
       description:
@@ -46,22 +48,24 @@ class Products with ChangeNotifier {
       price: price,
       imageUrl:
           'https://i.pinimg.com/564x/ff/5b/05/ff5b05afa8de4271f922d2b9eccf61e7.jpg',
+      synopsis: plot,
+      trailer: "https://www.youtube.com/watch?v=zSWdZVtXT7E",
     ),
   ];
   var _showFavorites = false;
 
-  List<Product> get items {
+  List<Movie> get items {
     if (_showFavorites == true) {
       return _items.where((items) => items.isFavorite).toList();
     }
     return [..._items];
   }
 
-  List<Product> get favoriteItems {
+  List<Movie> get favoriteItems {
     return _items.where((items) => items.isFavorite).toList();
   }
 
-  Product findById(String id) {
+  Movie findById(String id) {
     return _items.firstWhere((prod) => prod.id == id);
   }
 
