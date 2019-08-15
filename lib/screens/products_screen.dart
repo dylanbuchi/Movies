@@ -3,8 +3,7 @@ import 'package:movies/providers/cart.dart';
 import 'package:movies/widgets/app_drawer.dart';
 import 'package:movies/widgets/product_grid.dart';
 import 'package:provider/provider.dart';
-import 'package:movies/providers/product.dart';
-import 'package:movies/providers/products.dart';
+
 import 'package:movies/widgets/badge.dart';
 import 'cart_screen.dart';
 
@@ -34,7 +33,7 @@ class _ProductScreenState extends State<ProductScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Infinite Cinema',
+          'Cinema Infinity',
           style: Theme.of(context).textTheme.title,
         ),
         actions: <Widget>[

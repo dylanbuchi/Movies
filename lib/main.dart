@@ -10,12 +10,7 @@ import 'package:provider/provider.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MultiProvider(
         providers: [
@@ -58,12 +53,7 @@ class _MyAppState extends State<MyApp> {
       );
 }
 
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
+class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
         body: Image.asset(
@@ -74,16 +64,15 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         floatingActionButton: FloatingActionButton(
           child: Icon(
-            Icons.more_horiz,
+            Icons.add,
             size: 30,
             color: Colors.white,
           ),
           backgroundColor: Theme.of(context).primaryColor,
-          onPressed: () => setState(
-            () => Navigator.pushNamed(context, ProductScreen.page),
-          ),
+          onPressed: () => Navigator.pushNamed(context, ProductScreen.page),
         ),
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: Text(
             'Home',
           ),

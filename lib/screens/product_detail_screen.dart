@@ -51,8 +51,10 @@ class ProductDetailScreen extends StatelessWidget {
                 loadedProduct.description,
                 textAlign: TextAlign.justify,
                 style: const TextStyle(
-                  fontSize: 18,
+                  fontSize: 20,
                   height: 1.5,
+                  fontStyle: FontStyle.normal,
+                  fontFamily: 'Nunito',
                 ),
               ),
             ),
