@@ -51,7 +51,7 @@ class CartItem extends StatelessWidget {
                 child: Text(
                   '\$ $price',
                   style: const TextStyle(
-                    color: Colors.black,
+                    color: Colors.white,
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
                   ),

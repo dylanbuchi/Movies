@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:movies/providers/cart.dart';
+import 'package:movies/providers/orders.dart';
 import 'package:movies/screens/cart_screen.dart';
 import './screens/products_screen.dart';
+import 'screens/order_screen.dart';
 import 'screens/product_detail_screen.dart';
 import 'providers/products.dart';
 import 'package:provider/provider.dart';
@@ -22,6 +24,9 @@ class _MyAppState extends State<MyApp> {
           ),
           ChangeNotifierProvider.value(
             value: Cart(),
+          ),
+          ChangeNotifierProvider.value(
+            value: Orders(),
           ),
         ],
         child: MaterialApp(
@@ -47,6 +52,7 @@ class _MyAppState extends State<MyApp> {
             ProductScreen.page: (ctx) => ProductScreen(),
             ProductDetailScreen.page: (ctx) => ProductDetailScreen(),
             CartScreen.page: (ctx) => CartScreen(),
+            OrderScreen.page: (ctx) => OrderScreen(),
           },
         ),
       );
