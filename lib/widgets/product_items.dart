@@ -59,22 +59,6 @@ class _ProductItemState extends State<ProductItem> {
                 });
               }),
           trailing: IconButton(
-<<<<<<< HEAD
-            icon: Icon(
-              Icons.shopping_cart,
-              size: 30,
-              color: _pressedIconShoppingCart
-                  ? Colors.blue[100]
-                  : Colors.grey[800],
-            ),
-            onPressed: () {
-              setState(() {
-                _pressedIconShoppingCart = !_pressedIconShoppingCart;
-                cart.addItem(product.id, product.price, product.title);
-              });
-            },
-          ),
-=======
               icon: Icon(
                 Icons.shopping_cart,
                 size: 30,
@@ -104,7 +88,6 @@ class _ProductItemState extends State<ProductItem> {
                   );
                 });
               }),
->>>>>>> test
           backgroundColor: Theme.of(context).accentColor,
           title: Text(
             '${product.title}   \$${product.price}',
