@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies/screens/home.dart';
 
 import 'package:movies/screens/order_screen.dart';
 
@@ -31,7 +32,8 @@ class AppDrawer extends StatelessWidget {
           MenuTile(
             icon: Icons.home,
             text: Text("Home"),
-            navigation: () => Navigator.of(context).pushReplacementNamed('/'),
+            navigation: () =>
+                Navigator.of(context).pushReplacementNamed(MyHomePage.page),
           ),
         ],
       ),
