@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movies/providers/cart.dart';
 import 'package:provider/provider.dart';
 
-class CartItem extends StatelessWidget {
-  final margin_10 = const EdgeInsets.all(10);
-
+class CartItem extends StatefulWidget {
   final String id;
   final double price;
   final int quantity;
@@ -18,15 +16,66 @@ class CartItem extends StatelessWidget {
     this.title,
     this.productId,
   );
+
+  @override
+  _CartItemState createState() => _CartItemState();
+}
+
+class _CartItemState extends State<CartItem> {
+  final margin_10 = const EdgeInsets.all(10);
+
   @override
   Widget build(BuildContext context) {
     return Dismissible(
       onDismissed: (direction) =>
           Provider.of<Cart>(context, listen: false).removeItem(
-        productId,
+        widget.productId,
       ),
       direction: DismissDirection.endToStart,
-      key: ValueKey(id),
+      confirmDismiss: (direction) => showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(
+            "The selected movie Will be deleted",
+          ),
+          content: Text(
+            "The Movie ${widget.title} will be removed from your chart",
+          ),
+          actions: <Widget>[
+            FlatButton(
+              onPressed: () => setState(() {
+                Navigator.of(context).pop();
+              }),
+              child: Text(
+                'No',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            FlatButton(
+              onPressed: () {
+                setState(() {
+                  Provider.of<Cart>(
+                    context,
+                    listen: false,
+                  ).removeItem(
+                    widget.productId,
+                  );
+                  Navigator.of(context).pop();
+                });
+              },
+              child: Text(
+                'Yes',
+                style: TextStyle(
+                  color: Colors.red,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      key: ValueKey(widget.id),
       background: Container(
         margin: margin_10,
         padding: const EdgeInsets.only(
@@ -49,7 +98,7 @@ class CartItem extends StatelessWidget {
               backgroundColor: Theme.of(context).primaryColor,
               child: FittedBox(
                 child: Text(
-                  '\$ $price',
+                  '\$ ${widget.price}',
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 15,
@@ -58,10 +107,10 @@ class CartItem extends StatelessWidget {
                 ),
               ),
             ),
-            title: Text('$title'),
-            subtitle: Text('Total: \$ ${price + quantity}'),
+            title: Text('${widget.title}'),
+            subtitle: Text('Total: \$ ${widget.price + widget.quantity}'),
             trailing: Text(
-              '$quantity x',
+              '${widget.quantity} x',
               style: const TextStyle(),
             ),
           ),
