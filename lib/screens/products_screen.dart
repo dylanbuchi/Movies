@@ -104,7 +104,9 @@ class _ProductScreenState extends State<ProductScreen> {
                   Navigator.of(context).pushNamed(CartScreen.page);
                 });
               },
-              icon: Icon(Icons.shopping_cart),
+              icon: Icon(
+                Icons.shopping_cart,
+              ),
             ),
           ),
         ],

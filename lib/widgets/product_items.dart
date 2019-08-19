@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:movies/providers/cart.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:movies/screens/product_detail_screen.dart';
@@ -47,18 +48,18 @@ class _ProductItemState extends State<ProductItem> {
         padding: const EdgeInsets.all(0),
         child: GridTileBar(
           leading: IconButton(
-            icon: Icon(
-              Icons.favorite,
-              size: 30,
-              color: _pressedIconLove ? Colors.redAccent : Colors.grey[800],
-            ),
-            onPressed: () {
-              setState(() {
-                _pressedIconLove = !_pressedIconLove;
-              });
-            },
-          ),
+              icon: Icon(
+                Icons.favorite,
+                size: 30,
+                color: _pressedIconLove ? Colors.redAccent : Colors.grey[800],
+              ),
+              onPressed: () {
+                setState(() {
+                  _pressedIconLove = !_pressedIconLove;
+                });
+              }),
           trailing: IconButton(
+<<<<<<< HEAD
             icon: Icon(
               Icons.shopping_cart,
               size: 30,
@@ -73,6 +74,37 @@ class _ProductItemState extends State<ProductItem> {
               });
             },
           ),
+=======
+              icon: Icon(
+                Icons.shopping_cart,
+                size: 30,
+                color: _pressedIconShoppingCart
+                    ? Colors.blue[500]
+                    : Colors.grey[800],
+              ),
+              onPressed: () {
+                setState(() {
+                  _pressedIconShoppingCart = !_pressedIconShoppingCart;
+                  cart.addItem(product.id, product.price, product.title);
+                  Scaffold.of(context).hideCurrentSnackBar();
+                  Scaffold.of(context).showSnackBar(
+                    SnackBar(
+                      action: SnackBarAction(
+                        label: 'Cancel',
+                        textColor: Colors.red,
+                        onPressed: () => cart.cancelItem(product.id),
+                      ),
+                      content: Text(
+                        '${product.title} added to the chart ! ',
+                      ),
+                      duration: Duration(
+                        seconds: 2,
+                      ),
+                    ),
+                  );
+                });
+              }),
+>>>>>>> test
           backgroundColor: Theme.of(context).accentColor,
           title: Text(
             '${product.title}   \$${product.price}',
