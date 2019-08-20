@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:movies/screens/product_detail_screen.dart';
+import 'package:provider/provider.dart';
+
+import 'package:movies/providers/products.dart';
 
 class UserProductItem extends StatelessWidget {
   final String title;
   final String imageUrl;
+  final String id;
 
   UserProductItem(
     this.title,
     this.imageUrl,
+    this.id,
   );
 
   @override
@@ -36,7 +42,10 @@ class UserProductItem extends StatelessWidget {
           child: Row(
             children: <Widget>[
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, ProductDetailScreen.page,
+                      arguments: id);
+                },
                 icon: Icon(
                   Icons.movie,
                   color: Colors.white,
@@ -45,7 +54,9 @@ class UserProductItem extends StatelessWidget {
               ),
               IconButton(
                 padding: EdgeInsets.only(left: 20),
-                onPressed: () {},
+                onPressed: () {
+                  Provider.of<Products>(context, listen: false).deleteMovie(id);
+                },
                 icon: Icon(
                   Icons.delete,
                   color: Colors.red,
