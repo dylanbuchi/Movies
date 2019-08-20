@@ -20,8 +20,11 @@ class MyHomePage extends StatelessWidget {
         itemCount: productData.items.length,
         itemBuilder: (_, index) => Column(
           children: <Widget>[
-            UserProductItem(productData.items[index].title,
-                productData.items[index].imageUrl, productData.items[index].id),
+            UserProductItem(
+              productData.items[index].title,
+              productData.items[index].imageUrl,
+              productData.items[index].id,
+            ),
             Divider(),
           ],
         ),
