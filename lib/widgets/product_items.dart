@@ -36,11 +36,14 @@ class _ProductItemState extends State<ProductItem> {
             arguments: product.id,
           );
         },
-        child: CachedNetworkImage(
-          fit: BoxFit.fill,
-          imageUrl: product.imageUrl,
-          placeholder: (context, url) => CircularProgressIndicator(),
-          errorWidget: (context, url, error) => Icon(Icons.error),
+        child: Hero(
+          tag: product.imageUrl,
+          child: CachedNetworkImage(
+            fit: BoxFit.fill,
+            imageUrl: product.imageUrl,
+            placeholder: (context, url) => CircularProgressIndicator(),
+            errorWidget: (context, url, error) => Icon(Icons.error),
+          ),
         ), //Image.network(
         //product.imageUrl,
       ),

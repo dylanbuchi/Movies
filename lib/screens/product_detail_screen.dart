@@ -30,11 +30,14 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             Container(
               height: 500,
               width: double.infinity,
-              child: CachedNetworkImage(
-                fit: BoxFit.fill,
-                imageUrl: loadedProduct.imageUrl,
-                placeholder: (context, url) => CircularProgressIndicator(),
-                errorWidget: (context, url, error) => Icon(Icons.error),
+              child: Hero(
+                tag: loadedProduct.imageUrl,
+                child: CachedNetworkImage(
+                  fit: BoxFit.fill,
+                  imageUrl: loadedProduct.imageUrl,
+                  placeholder: (context, url) => CircularProgressIndicator(),
+                  errorWidget: (context, url, error) => Icon(Icons.error),
+                ),
               ),
             ),
             SizedBox(
