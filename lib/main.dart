@@ -10,7 +10,7 @@ import 'screens/order_screen.dart';
 import 'screens/product_detail_screen.dart';
 import 'providers/products.dart';
 import 'package:provider/provider.dart';
-import 'package:http/http.dart' as http;
+import 'screens/splash_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -49,7 +49,15 @@ class MyApp extends StatelessWidget {
                 ),
               ),
             ),
-            home: authData.isAuthData ? ProductScreen() : AuthScreen(),
+            home: authData.isAuthData
+                ? ProductScreen()
+                : FutureBuilder(
+                    future: authData.tryAutoLogin(),
+                    builder: (context, authResult) =>
+                        authResult.connectionState == ConnectionState.waiting
+                            ? SplashScreen()
+                            : AuthScreen(),
+                  ),
             routes: {
               AuthScreen.page: (context) => AuthScreen(),
               MyHomePage.page: (context) => MyHomePage(),
