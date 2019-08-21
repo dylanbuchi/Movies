@@ -5,15 +5,11 @@ import 'package:provider/provider.dart';
 import 'package:movies/providers/products.dart';
 
 class UserProductItem extends StatelessWidget {
+  final String id;
   final String title;
   final String imageUrl;
-  final String id;
 
-  UserProductItem(
-    this.title,
-    this.imageUrl,
-    this.id,
-  );
+  UserProductItem(this.title, this.imageUrl, this.id);
 
   @override
   Widget build(BuildContext context) {
