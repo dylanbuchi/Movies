@@ -22,10 +22,10 @@ dependencies:
     
   
   provider: ^3.0.0+1
-  cached_network_image: ^1.1.1
+  cached_network_image: ">=1.1.1 <4.0.0"
   intl: ^0.15.8
   youtube_player: ^3.5.0
-  http: ^0.12.0+2
+  http: ">=0.12.0+2 <0.14.0"
   shared_preferences: ^0.5.3+4
 
   # The following adds the Cupertino Icons font to your application.
